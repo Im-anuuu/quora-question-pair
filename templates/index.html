@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Quora Question Pair Similarity</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 600px; margin: 50px auto; padding: 0 16px; }
+    textarea { width: 100%; padding: 8px; margin: 6px 0 14px; }
+    button { padding: 10px 20px; background: #1e395e; color: #fff; border: 0; cursor: pointer; }
+    .box { margin-top: 20px; padding: 14px; border-radius: 6px; }
+    .yes { background: #d4edda; } .no { background: #f8d7da; }
+  </style>
+</head>
+<body>
+  <h2>Quora Question Pair Similarity</h2>
+  <form method="post">
+    <label>Question 1</label>
+    <textarea name="q1" rows="2" required></textarea>
+    <label>Question 2</label>
+    <textarea name="q2" rows="2" required></textarea>
+    <button type="submit">Check</button>
+  </form>
+  {% if result %}
+    <div class="box {{ 'yes' if result.duplicate else 'no' }}">
+      {{ "Duplicate" if result.duplicate else "Not duplicate" }} ({{ result.prob }}% match)
+    </div>
+  {% endif %}
+</body>
+</html>
